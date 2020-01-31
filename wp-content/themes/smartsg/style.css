@@ -1,0 +1,345 @@
+/* 
+Theme Name: s-martsg.com
+Theme URI: https://mobilecodelab.com/
+Description: S MartSG is a responsive WordPress blog and news theme made for bloggers and newspapers. It is of course modern in the ways that it is both fast and search engine optimized (SEO friendly) as a theme should be nowadays. 
+Author: ThemeEverest
+Author URI: https://mobilecodelab.com/
+Template: minimalistblogger
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html'
+Tags: blog, news, right-sidebar, post-formats, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, sticky-post, translation-ready, two-columns, custom-header, footer-widgets, theme-options, entertainment
+Version: 1.0.0
+Text Domain: s-martsg
+*/
+
+h1.entry-title, h2.entry-title, h2.entry-title a:hover, h2.entry-title a:active {
+	font-family: 'Noto Serif', serif;
+
+	font-weight:normal;
+}
+body,
+code,
+html,
+kbd,
+pre,
+samp,
+code,
+kbd,
+pre,
+tt,
+var {
+	font-family: 'Open Sans', sans-serif;
+}
+body {
+	font-weight: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+	font-weight:normal;
+	font-family: 'Noto Serif', serif;
+
+}
+
+.swidgets-wrap,
+article.fbox,
+.footer-column-three input.search-submit,
+.footer-column-three input.search-field,
+.featured-sidebar .search-field, .header-widget .search-field,
+.primary-menu .pmenu,
+.comments-area,
+.error404 main#main, .search-no-results section.fbox.no-results.not-found,
+.archive .page-header h1,
+.search-results h1.page-title {
+	border-style:double;
+	border-width:4px;
+	border-color:#c69c6d;
+}
+.primary-menu .pmenu,
+.search-results h1.page-title,
+.archive .page-header h1 {
+	border-left:0px;
+	border-right:0px;
+}
+.footer-column-three input.search-field {
+	color: #c69c6d;
+}
+.page-numbers li a {
+	background:#c69c6d;
+	border-color:#c69c6d;
+}
+.page-numbers.current,
+span.page-numbers.dots {
+	border-color:#c69c6d;
+	color:#c69c6d;
+}
+.site-header ul ul li a,
+.site-info {
+	border-color:#c69c6d;
+}
+.comments-area p.form-submit input,
+.blogpost-button,
+.post-data-divider {
+	background: #c69c6d;
+}
+
+
+.site-branding .site-title {
+	font-family: 'Noto Serif', serif;
+
+}
+
+
+.main-navigation ul li .sub-arrow {
+
+	color: #c69c6d;
+}
+.main-navigation ul ul li .sub-arrow {
+	right:-10px;
+}
+
+
+
+.primary-menu ul li ul.children li,
+.primary-menu ul li ul.sub-menu li {
+	border-bottom: 0px solid #c69c6d
+}
+
+.secondary-menu {
+	border-top: 1px solid #c69c6d;
+}
+
+.secondary-menu ul.smenu ul li {
+	border-bottom: 0px solid #c69c6d
+}
+
+.secondary-menu .arrow-menu {
+	border-left: 1px solid #c69c6d
+}
+.overlay .overlay-close {
+	color: #000;
+	background: #c69c6d;
+}
+
+.site-header ul ul {
+	border: 1px solid #c69c6d;
+}
+.entry-meta {
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+.entry-footer span:after {
+	border-right: 1px solid #c69c6d;
+}
+
+.posts-related ul.list-related-posts li {
+	border-bottom: 1px solid #c69c6d
+}
+
+
+.widget ul li {
+	border-bottom: 1px solid #e6e6e6;
+}
+
+#wp-calendar caption {
+	font-weight: bold
+}
+
+
+@media (min-width:992px) {
+
+	.footer-menu ul ul {
+		margin-left: 0;
+		list-style: none;
+		border-left: 1px solid #c69c6d
+	}
+	.secondary-menu .smenu ul ul.children li,
+	.secondary-menu .smenu ul ul.sub-menu li {
+		border-bottom: 1px solid #c69c6d
+	}
+}
+
+@media screen and (max-width:1023px) {
+	.super-menu {
+		border-top:4px double #c69c6d;
+		border-bottom:4px double #c69c6d;
+	}
+	#smobile-menu *,
+	#smobile-menu.show .main-navigation ul li {
+		border-color:#c69c6d;
+	}
+	a#pull,
+	a#pull:hover {
+		color:#c69c6d;
+	}
+	.toggle-mobile-menu:before {
+		color:#c69c6d;
+	}
+
+}
+
+@media (max-width:992px) {
+	.primary-menu .pmenu {
+		border-top:1px solid #c69c6d;
+		border-bottom:1px solid #c69c6d;
+	}
+	.main-navigation ul li a {
+		font-weight: normal;
+	}
+	.main-navigation ul li.current-menu-item>a {
+		font-weight:bold;
+	}
+	
+	.site-header ul ul li a {
+		font-size: 14px;
+		opacity: 0.8;
+		border-top:1px solid #c69c6d;
+	}
+	.site-header ul ul li:first-of-type a {
+		border-top:0px solid #c69c6d;
+	}
+	.swidgets-wrap {
+		border: 4px double #c69c6d;
+	}
+	.swidgets-wrap h3 {
+		font-weight: bold;
+	}	
+	
+	.site-info {
+		border-top:1px solid #c69c6d;
+	}
+	.footer-column-three h3 {
+		font-weight: bold;
+		font-family: 'Open Sans', sans-serif;
+	}
+	.entry-meta {
+		font-weight: normal;
+	}
+
+	h1.entry-title, h2.entry-title, h2.entry-title a:hover, h2.entry-title a:active {
+		font-family: 'Noto Serif', serif;
+
+		font-weight:normal;
+	}
+
+	.entry-meta {
+		font-weight: normal;
+	}
+
+	article .entry-content {
+		font-family: 'Open Sans', sans-serif;
+	}
+	.single article .entry-content, .page article .entry-content {
+		color:#000;
+	}
+
+	article.fbox {
+		border: 4px double #c69c6d;
+	}
+
+	.blogpost-button {
+		background: #c69c6d;
+	}
+
+	.page-numbers li a{
+		background: #c69c6d;
+		padding: 10px 17px;
+		transition: all 0.4s;
+		font-size: 14px;
+		color: #fff;
+		margin: 0 5px;
+		text-decoration: none;
+		border: 1px solid #c69c6d;
+		font-weight:600;
+		display: inline-block;
+		float: left;
+	}
+	.page-numbers li a:hover {
+		background:rgba(0,0,0,0);
+		color:#000;
+	}
+	.page-numbers.current {
+		border: 1px solid #c69c6d;
+	}
+	
+
+	.error404 main#main,
+	.search-no-results section.fbox.no-results.not-found {
+		border: 4px solid #c69c6d;
+	}
+	.search-no-results h1, .error404 h1 {
+		font-family: 'Noto Serif', serif;
+
+	}
+	.search-results h1.page-title {
+		border-top: 4px double #c69c6d;
+		border-bottom: 4px double #c69c6d;
+		font-family: 'Noto Serif', serif;
+
+	}
+
+	.comments-area .comments-title {
+		font-family: 'Noto Serif', serif;
+
+	}
+	.search-no-results .search-form label, .error404 .search-form label {
+		border: 1px solid #c69c6d;
+	}
+	.error404 .search-form label, .search-no-results .search-form label {
+		border: 1px solid #c69c6d;
+	}
+	.error404 input.search-submit, .search-no-results input.search-submit {
+		border: 1px solid #c69c6d;
+	}
+	.archive .page-header h1 {
+		border-top: 4px double #c69c6d;
+		border-bottom: 4px double #c69c6d;
+	}
+	.comments-area {
+		border:4px double #c69c6d;
+	}
+
+	.comments-area ol.comment-list .comment {
+		border-bottom: 1px solid #c69c6d;
+		padding-bottom:40px;
+	}
+	span.page-numbers.dots {
+		padding: 10px 17px;
+		transition: all 0.4s;
+		font-size: 14px;
+		color: #000;
+		margin: 0 5px;
+		text-decoration: none;
+		border: 1px solid #c69c6d;
+		font-weight: 600;
+		display: inline-block;
+		float: left;
+	}
+
+	#comments h3#reply-title {
+		font-family: 'Noto Serif', serif;
+
+		font-size: 26px;
+		margin-bottom: 0px;
+		padding-bottom: 10px;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 1023px) {
+	.smenu-hide.toggle-mobile-menu.menu-toggle {
+		border-bottom:1px solid #c69c6d;
+	}
+
+}
