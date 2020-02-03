@@ -1,20 +1,18 @@
 <?php 
+
+include "src/lib/custommetabox.php";
+include "src/lib/custom-shortcodes.php";
+
 add_action( 'wp_enqueue_scripts', 'gold_essentials_enqueue_styles' );
 function gold_essentials_enqueue_styles() {
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' ); 
 } 
 
 
-
-
-
 function gold_essentials_google_fonts() {
 	wp_enqueue_style( 'gold-essentials-google-fonts', '//fonts.googleapis.com/css?family=Noto+Serif:400,700|Open+Sans:400,600,700&display=swap', false ); 
 }
 add_action( 'wp_enqueue_scripts', 'gold_essentials_google_fonts' );
-
-
-
 
 
 function gold_essentials_customize_register( $wp_customize ) {
@@ -98,3 +96,11 @@ if(! function_exists('gold_essentials_customizer_css_final_output' ) ):
 		<?php }
 		add_action( 'wp_head', 'gold_essentials_customizer_css_final_output' );
 		endif;
+
+
+if ( ! function_exists( 'smartsg_setup' ) ) :
+	function smartsg_setup() {
+		$qrcode = new My_Custom_Meta_Box(array('post'), 'product_qr_code', 'Mã QRCode của sản phẩm', 'product_qr_code', 'qr_code', 'normal');
+	}
+	add_action( 'after_setup_theme', 'smartsg_setup' );
+endif;

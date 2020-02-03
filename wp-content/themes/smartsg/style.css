@@ -157,6 +157,9 @@ span.page-numbers.dots {
 	font-weight: bold
 }
 
+.gm-style-iw-d {
+	color: #000;
+}
 
 @media (min-width:992px) {
 
