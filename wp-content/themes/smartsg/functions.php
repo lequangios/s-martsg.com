@@ -1,6 +1,19 @@
 <?php 
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+add_filter('show_admin_bar', '__return_false');
+
+define('THEME_VERSION',                 "1.0"                           );
+define('THEME_PATH',                    'https://s-martsg.com/wp-content/themes/smartsg'        );
+define('THEME_URL',                     esc_url( home_url( '/' ) )      );
+define('THEME_URI',                     'https://s-martsg.com/wp-content/themes/smartsg'    );
+define('THEME_ASSETS',                  THEME_URI.'/assets'             );
+define('THEME_PATH_PLUGIN',             THEME_PATH.'/plugin'            );
+define('THEME_URL_PLUGIN',              THEME_URI .'/plugin'            );
+define('BASE_UPLOAD',                   '/wp-content/uploads'           );
+define('OPTIONS_FRAMEWORK_DIRECTORY',   THEME_PATH_PLUGIN . '/options/' );
 
 include "src/lib/custommetabox.php";
+include "src/lib/customgroupmetabox.php";
 include "src/lib/custom-shortcodes.php";
 
 add_action( 'wp_enqueue_scripts', 'gold_essentials_enqueue_styles' );
@@ -101,6 +114,19 @@ if(! function_exists('gold_essentials_customizer_css_final_output' ) ):
 if ( ! function_exists( 'smartsg_setup' ) ) :
 	function smartsg_setup() {
 		$qrcode = new My_Custom_Meta_Box(array('post'), 'product_qr_code', 'Mã QRCode của sản phẩm', 'product_qr_code', 'qr_code', 'normal');
+		new My_Custom_Group_Meta_Box(array('post'), 'my-price-meta-group', 'Loại & Giá Thành', 'my_price_content', 'homePageMetaGroup');
 	}
 	add_action( 'after_setup_theme', 'smartsg_setup' );
 endif;
+
+if ( ! function_exists( 'smarsg_scripts' ) ) :
+	function smarsg_scripts()
+	{
+		$dept = array();
+		wp_enqueue_style( 'myStyle'              , THEME_ASSETS . '/css/custom.css', $dept, THEME_VERSION );
+
+		wp_enqueue_script('myDataModel'	    	 , THEME_ASSETS . '/js/DataModel.js',$dept,THEME_VERSION,false);
+		wp_enqueue_script('myKnockoutJS'	     , THEME_ASSETS . '/js/knockout-3.5.1.js',$dept,'3.5.1',false);
+	}
+endif;
+add_action('admin_enqueue_scripts', 'smarsg_scripts');

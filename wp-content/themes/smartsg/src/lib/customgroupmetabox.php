@@ -13,6 +13,9 @@ class My_Custom_Group_Meta_Box
 	public $metabox_label_name;
 	public $metabox_name;
 	public $post_id = false;
+	public $data_model;
+	public $metabox_group_value_id;
+	public $metabox_group_wrapper_id;
 
 	/**
        * 
@@ -27,13 +30,16 @@ class My_Custom_Group_Meta_Box
        * @param integer 	$post_id  				id of post need to add meta box, default is false, will add to all post
        * @return object
        */
-	public function __construct($post_type_array = array(), $metabox_div_id, $metabox_label_name, $metabox_name, $post_id = false, $break = false) 
+	public function __construct($post_type_array = array(), $metabox_div_id, $metabox_label_name, $metabox_name, $data_model = 'modelData', $post_id = false, $break = false) 
 	{
 		$this->post_type_array = $post_type_array;
 		$this->metabox_div_id = $metabox_div_id;
 		$this->metabox_label_name = $metabox_label_name;
 		$this->metabox_name = $metabox_name;
 		$this->post_id = $post_id;
+		$this->data_model = $data_model;
+		$this->metabox_group_value_id = $data_model.'_value';
+		$this->metabox_group_wrapper_id = $data_model.'_wrapper_id';
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
@@ -146,9 +152,9 @@ class My_Custom_Group_Meta_Box
 		if($values==NULL) $values = '{"data":[]}';
 		// $value = isset( $values[$this->metabox_name] ) ? esc_attr( $values[$this->metabox_name][0] ) : '{"data":[]}';
 		?>
-		<div id="custom-meta-box-wrapper" class="custom-meta-box-wrapper">
-			<input type="hidden" id="my_custom_meta_group" value = "<?php echo esc_html($values); ?>"/>
-			<div class="group-meta" data-bind="foreach:{ data: homePageMetaGroup,  }">
+		<div id="<?php echo $this->metabox_group_wrapper_id; ?>" class="custom-meta-box-wrapper">
+			<input type="hidden" id="<?php echo $this->metabox_group_value_id ; ?>" value = "<?php echo esc_html($values); ?>"/>
+			<div class="group-meta" data-bind="foreach:{ data: <?php echo $this->data_model; ?>  }">
 				<div  data-bind="attr:{id:'item_'+id()}" class="group-meta-content">
 					<p class="row"><label>Title</label><input type="text" name="title" placeholder="Title" data-bind="textInput:title"/></p>
 					<p style="clear:both"></p>
