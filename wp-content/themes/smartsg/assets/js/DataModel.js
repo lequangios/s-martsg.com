@@ -174,8 +174,11 @@ function MyHomePageMetaGroupController()
 }
 
 jQuery(document).ready(function($) { 
-	myHomeMeta = new MyHomePageMetaGroupController();
-    var json = $('#homePageMetaGroup_value').val();
-    myHomeMeta.init(json);
-    ko.applyBindings(myHomeMeta, document.getElementById("homePageMetaGroup_wrapper_id"));
+	if($('#homePageMetaGroup_value').length > 0) {
+		myHomeMeta = new MyHomePageMetaGroupController();
+    	var json = $('#homePageMetaGroup_value').val();
+    	myHomeMeta.init(json);
+    	ko.applyBindings(myHomeMeta, document.getElementById("homePageMetaGroup_wrapper_id"));
+	}
+	
 });
