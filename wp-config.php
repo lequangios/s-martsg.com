@@ -65,6 +65,17 @@ define( 'NONCE_SALT',       'n1odO7vf{AK0`R9tpc9,,w[@&d vyXx-YY6Ll9(Cp@q(Yg(9a>C
  */
 $table_prefix = 'sm_';
 
+define( 'SMTP_HOST', 'mail.s-martsg.com' );  // A2 Hosting server name. For example, "a2ss10.a2hosting.com"
+define( 'SMTP_AUTH', true );
+define( 'SMTP_PORT', '465' );
+define( 'SMTP_SECURE', 'ssl' );
+define( 'SMTP_USERNAME', 'sales@s-martsg.com' );  // Username for SMTP authentication
+define( 'SMTP_PASSWORD', 'j55e%bOxqscX' );          // Password for SMTP authentication
+define( 'SMTP_FROM',     'sales@s-martsg.com' );  // SMTP From address
+define( 'SMTP_FROMNAME', 'Sales' );         // SMTP From name
+
+
+
 /**
  * For developers: WordPress debugging mode.
  *

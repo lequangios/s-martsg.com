@@ -130,3 +130,27 @@ if ( ! function_exists( 'smarsg_scripts' ) ) :
 	}
 endif;
 add_action('admin_enqueue_scripts', 'smarsg_scripts');
+
+add_action( 'phpmailer_init', 'send_smtp_email' );
+function send_smtp_email( $phpmailer ) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host       = SMTP_HOST;
+    $phpmailer->SMTPAuth   = SMTP_AUTH;
+    $phpmailer->Port       = SMTP_PORT;
+    $phpmailer->SMTPSecure = SMTP_SECURE;
+    $phpmailer->Username   = SMTP_USERNAME;
+    $phpmailer->Password   = SMTP_PASSWORD;
+    $phpmailer->From       = SMTP_FROM;
+    $phpmailer->FromName   = SMTP_FROMNAME;
+}
+
+add_action( 'wp_ajax_nopriv_send_email_by_ajax', 'send_email_by_ajax' );
+add_action( 'wp_ajax_send_email_by_ajax', 'send_email_by_ajax' );
+function send_email_by_ajax(){
+	$value = 0;
+	if(( isset( $_POST['user_email'] ) )&&(esc_attr( $_POST['user_email'] ) != '')){
+		$value = wp_mail("levietquangt2@gmail.com", "Đơn hàng", $_POST['user_email']);
+	}
+	echo $value;
+	die();
+}

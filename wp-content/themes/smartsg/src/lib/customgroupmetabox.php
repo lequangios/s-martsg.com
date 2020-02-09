@@ -156,37 +156,37 @@ class My_Custom_Group_Meta_Box
 			<input type="hidden" id="<?php echo $this->metabox_group_value_id ; ?>" value = "<?php echo esc_html($values); ?>"/>
 			<div class="group-meta" data-bind="foreach:{ data: <?php echo $this->data_model; ?>  }">
 				<div  data-bind="attr:{id:'item_'+id()}" class="group-meta-content">
-					<p class="row"><label>Title</label><input type="text" name="title" placeholder="Title" data-bind="textInput:title"/></p>
+					<p class="row"><label>Loại - Mã</label><input type="text" name="title" placeholder="Loại - Mã" data-bind="textInput:title"/></p>
 					<p style="clear:both"></p>
-					<p class="row">
+					<p class="row" style="display:none">
 						<label>Decription</label>
-						<div class="col" style="float: left; max-width:500px;width:100%;">
+						<div class="col" style="float: left; max-width:500px;width:100%;display:none">
 							<p class="menu-p">[&nbsp;<span class="intLink" onclick="insertMetachars('&lt;b&gt;','&lt;\/b&gt;', this);"><strong>Bold</strong></span> | <span class="intLink" onclick="insertMetachars('&lt;em&gt;','&lt;\/em&gt;', this);"><em>Italic</em></span> | <span class="intLink" onclick="var newURL=prompt('Enter the full URL for the link');if(newURL){insertMetachars('&lt;a href=\u0022'+newURL+'\u0022&gt;','&lt;\/a&gt;');}else{document.myForm.myTxtArea.focus();}">URL</span>&nbsp;]</p>
 
 							<textarea cols="8" rows="10" style="max-width:500px;width:100%;" name="description" placeholder="Decription"  data-bind="textInput:description, attr:{value:description}" value=""></textarea>
 						</div>
 					</p>
 					<p style="clear:both"></p>
-					<p class="row"><label>Url</label><input type="text" name="url" placeholder="url" data-bind="textInput:url"/></p>
+					<p class="row" ><label>Giá Thành</label><input type="text" name="url" placeholder="1000" data-bind="textInput:url"/></p>
 					<p style="clear:both"></p>
-					<p>
+					<p style="display:none">
 						<label>Icon</label>
-						<p class="col">
-							<div class="review no-icon">
+						<p class="col" style="display:none">
+							<div class="review no-icon" style="display:none">
 								<img class="iconUrl" src="" data-bind="attr:{src: iconUrl}">
-								<a class="close" data-bind="event:{click:$parent.removeMediaImage}"></a>
+								<a class="close" style="display:none" data-bind="event:{click:$parent.removeMediaImage}"></a>
 								<input type="text" class="iconId hidden" name="iconId" value="" data-bind="attr:{value:iconId}" />
 							</div>
-							<a class="add-new-icon" data='group_0' data-bind="event:{click:$parent.addMediaImage}" href="<?php echo $upload_link ?>">Add Icon</a>
+							<a class="add-new-icon" style="display:none" data='group_0' data-bind="event:{click:$parent.addMediaImage}" href="<?php echo $upload_link ?>">Add Icon</a>
 						</p>
 					</p>
 					<input type="text" class="dataJson hidden" name="dataJson" value="" data-bind="attr:{value:dataJson}" />
 					<p style="clear:both"></p>
-					<a class="remove-entry button-primary" data-bind="click: $parent.removeEntry" >Remove Entry</a>
+					<a class="remove-entry button-primary" style="background-color:red" data-bind="click: $parent.removeEntry" >Xoá Loại</a>
 					<div class="line"></div>
 				</div>
 			</div>
-			<a class="add-entry button-primary" data-bind="click: addEntry">Add Entry</a>	
+			<a class="add-entry button-primary" data-bind="click: addEntry">Thêm Loại</a>	
 			<p style="clear:both"></p>
 			<input type='text' class="hidden" name='<?php echo $this->metabox_name ?>' id='<?php echo $this->metabox_name ?>' data-bind="attr:{value:homeMetaData}" value='<?php echo $value; ?>'/>
 		</div>

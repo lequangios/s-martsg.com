@@ -17,7 +17,7 @@ function MyHomePageMetaGroupModel()
 	{
 		self.id 				= ko.observable(obj.id);
 		self.title 				= ko.observable(obj.title);
-		self.description 		= ko.observable(convertBtagString(obj.description));
+		self.description 		= ko.observable(obj.description);
 		self.iconId 			= ko.observable(obj.iconId);
 		self.iconUrl 			= ko.observable(obj.iconUrl);
 		self.url 				= ko.observable(obj.url);
