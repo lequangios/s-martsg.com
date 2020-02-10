@@ -78,77 +78,75 @@ class Wp_StatsMechanic extends WP_Widget{
     }
        
   // extract($instance);
-	 public function form($instance)  {
-    $instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
-    $title = $instance['title'];
+	public function form($instance)  {
+    	$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
+    	$title = $instance['title'];
+		?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('font_color'); ?>"><?php _e('Font Color:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('font_color'); ?>" name="<?php echo $this->get_field_name('font_color'); ?>" type="text" value="<?php echo $instance['font_color']; ?>" /></label></p>
+		<p><font size='2'><?php _e('To change the font color, fill the field with the HTML color code. example: #333','wp-statsmechanic');?> </font></p>
+		<p><font size='2'><a href="http://www.balimechanicmedia.co.id/color-picker/" target="_blank"><?php _e('Click here</a> to select another color variation.', 'wp-statsmechanic');?></font></p>
+		<p><font size='3'><b><?php _e('Widget Options', 'wp-statsmechanic');?></b></font></p>
 
+		<p><label for="<?php echo $this->get_field_id('count_start'); ?>"><?php _e('Counter Start:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('count_start'); ?>" name="<?php echo $this->get_field_name('count_start'); ?>" type="text" value="<?php echo $instance['count_start']; ?>" /></label></p>
+		<p><font size='2'><?php _e('Fill in with numbers to start the initial calculation of the counter, if the empty counter will start from 1','wp-statsmechanic');?></font></p>
+		<p><label for="<?php echo $this->get_field_id('hits_start'); ?>"><?php _e('Hits Start:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('hits_start'); ?>" name="<?php echo $this->get_field_name('hits_start'); ?>" type="text" value="<?php echo $instance['hits_start']; ?>" /></label></p>
+		<p><font size='2'><?php _e('Fill in the numbers to start the initial calculation of the hits, if the empty hits will start from 1','wp-statsmechanic'); ?></font></p>
 
-?>
-<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('font_color'); ?>"><?php _e('Font Color:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('font_color'); ?>" name="<?php echo $this->get_field_name('font_color'); ?>" type="text" value="<?php echo $instance['font_color']; ?>" /></label></p>
-<p><font size='2'><?php _e('To change the font color, fill the field with the HTML color code. example: #333','wp-statsmechanic');?> </font></p>
-<p><font size='2'><a href="http://www.balimechanicmedia.co.id/color-picker/" target="_blank"><?php _e('Click here</a> to select another color variation.', 'wp-statsmechanic');?></font></p>
-<p><font size='3'><b><?php _e('Widget Options', 'wp-statsmechanic');?></b></font></p>
+		<p><label for="<?php echo $this->get_field_id('count_length'); ?>"><?php _e('Image Counter Length:','wp-statsmechanic');?><select class="select" id="<?php echo $this->get_field_id('count_length'); ?>" name="<?php echo $this->get_field_name('count_length'); ?>" selected="<?php echo $instance['count_length']; ?>">
+				<option value="<?php echo $instance['count_length']; ?>" selected><?php echo $instance['count_length']; ?></option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				</select></label></p>
+		<p><font size='2'><?php _e('Define your Image counter length, the default length is 4','wp-statsmechanic');?></font></p>
 
-<p><label for="<?php echo $this->get_field_id('count_start'); ?>"><?php _e('Counter Start:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('count_start'); ?>" name="<?php echo $this->get_field_name('count_start'); ?>" type="text" value="<?php echo $instance['count_start']; ?>" /></label></p>
-<p><font size='2'><?php _e('Fill in with numbers to start the initial calculation of the counter, if the empty counter will start from 1','wp-statsmechanic');?></font></p>
-<p><label for="<?php echo $this->get_field_id('hits_start'); ?>"><?php _e('Hits Start:','wp-statsmechanic');?> <input class="widefat" id="<?php echo $this->get_field_id('hits_start'); ?>" name="<?php echo $this->get_field_name('hits_start'); ?>" type="text" value="<?php echo $instance['hits_start']; ?>" /></label></p>
-<p><font size='2'><?php _e('Fill in the numbers to start the initial calculation of the hits, if the empty hits will start from 1','wp-statsmechanic'); ?></font></p>
-
-<p><label for="<?php echo $this->get_field_id('count_length'); ?>"><?php _e('Image Counter Length:','wp-statsmechanic');?><select class="select" id="<?php echo $this->get_field_id('count_length'); ?>" name="<?php echo $this->get_field_name('count_length'); ?>" selected="<?php echo $instance['count_length']; ?>">
-		  <option value="<?php echo $instance['count_length']; ?>" selected><?php echo $instance['count_length']; ?></option>
-		  <option value="4">4</option>
-		  <option value="5">5</option>
-		  <option value="6">6</option>
-		  <option value="7">7</option>
-		 </select></label></p>
-<p><font size='2'><?php _e('Define your Image counter length, the default length is 4','wp-statsmechanic');?></font></p>
-
-<p><label for="<?php echo $this->get_field_id('today_view'); ?>"><?php _e('Enable Visit Today display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['today_view'], 'on' ); ?> id="<?php echo $this->get_field_id('today_view'); ?>" name="<?php echo $this->get_field_name('today_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('yesterday_view'); ?>"><?php _e('Enable Visit Yesterday display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['yesterday_view'], 'on' ); ?> id="<?php echo $this->get_field_id('yesterday_view'); ?>" name="<?php echo $this->get_field_name('yesterday_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('month_view'); ?>"><?php _e('Enable Month display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['month_view'], 'on' ); ?> id="<?php echo $this->get_field_id('month_view'); ?>" name="<?php echo $this->get_field_name('month_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('year_view'); ?>"><?php _e('Enable Year display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['year_view'], 'on' ); ?> id="<?php echo $this->get_field_id('year_view'); ?>" name="<?php echo $this->get_field_name('year_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('total_view'); ?>"><?php _e('Enable Total Visit display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['total_view'], 'on' ); ?> id="<?php echo $this->get_field_id('total_view'); ?>" name="<?php echo $this->get_field_name('total_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('hits_view'); ?>"><?php _e('Enable Hits Today display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['hits_view'], 'on' ); ?> id="<?php echo $this->get_field_id('hits_view'); ?>" name="<?php echo $this->get_field_name('hits_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('totalhits_view'); ?>"><?php _e('Enable Total Hits display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['totalhits_view'], 'on' ); ?> id="<?php echo $this->get_field_id('totalhits_view'); ?>" name="<?php echo $this->get_field_name('totalhits_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('online_view'); ?>"><?php _e('Enable Whos Online display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['online_view'], 'on' ); ?> id="<?php echo $this->get_field_id('online_view'); ?>" name="<?php echo $this->get_field_name('online_view'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('ip_display'); ?>"><?php _e('Enable IP address display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['ip_display'], 'on' ); ?> id="<?php echo $this->get_field_id('ip_display'); ?>" name="<?php echo $this->get_field_name('ip_display'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('server_time'); ?>"><?php _e('Enable Server Time display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['server_time'], 'on' ); ?> id="<?php echo $this->get_field_id('server_time'); ?>" name="<?php echo $this->get_field_name('server_time'); ?>" /></label></p>
-<p><label for="<?php echo $this->get_field_id('statsmechanic_align'); ?>"><?php _e('Plugins align? ', 'wp-statsmechanic'); ?>
-		<select class="select" id="<?php echo $this->get_field_id('statsmechanic_align'); ?>" name="<?php echo $this->get_field_name('statsmechanic_align'); ?>" selected="<?php echo $instance['statsmechanic_align']; ?>">
-		  <option value="<?php echo $instance['statsmechanic_align']; ?>" selected><?php echo $instance['statsmechanic_align']; ?></option>
-		  <option value="Left">Left</option>
-		  <option value="Center">Center</option>
-		  <option value="Right">Right</option>
-		 </select></label></p>
-<p><label for="<?php echo $this->get_field_id('statsmechanic_credit'); ?>"><?php _e('Display plugin credit? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['statsmechanic_credit'], 'on' ); ?> id="<?php echo $this->get_field_id('statsmechanic_credit'); ?>" name="<?php echo $this->get_field_name('statsmechanic_credit'); ?>" /></label></p><p><?php _e('Please go to <a href="options-general.php?page=plugin_statsmechanic_menu">Settings -> Visitor Counter Options</a> to configure image counter','wp-statsmechanic');?></p>
-<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ZMEZEYTRBZP5N&lc=ID&item_name=Aditya%20Subawa&item_number=426267&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" alt="<?php _e('Donate', 'wp-statsmechanic') ?>" /></a></p>
-<?php
+		<p><label for="<?php echo $this->get_field_id('today_view'); ?>"><?php _e('Enable Visit Today display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['today_view'], 'on' ); ?> id="<?php echo $this->get_field_id('today_view'); ?>" name="<?php echo $this->get_field_name('today_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('yesterday_view'); ?>"><?php _e('Enable Visit Yesterday display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['yesterday_view'], 'on' ); ?> id="<?php echo $this->get_field_id('yesterday_view'); ?>" name="<?php echo $this->get_field_name('yesterday_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('month_view'); ?>"><?php _e('Enable Month display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['month_view'], 'on' ); ?> id="<?php echo $this->get_field_id('month_view'); ?>" name="<?php echo $this->get_field_name('month_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('year_view'); ?>"><?php _e('Enable Year display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['year_view'], 'on' ); ?> id="<?php echo $this->get_field_id('year_view'); ?>" name="<?php echo $this->get_field_name('year_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('total_view'); ?>"><?php _e('Enable Total Visit display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['total_view'], 'on' ); ?> id="<?php echo $this->get_field_id('total_view'); ?>" name="<?php echo $this->get_field_name('total_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('hits_view'); ?>"><?php _e('Enable Hits Today display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['hits_view'], 'on' ); ?> id="<?php echo $this->get_field_id('hits_view'); ?>" name="<?php echo $this->get_field_name('hits_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('totalhits_view'); ?>"><?php _e('Enable Total Hits display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['totalhits_view'], 'on' ); ?> id="<?php echo $this->get_field_id('totalhits_view'); ?>" name="<?php echo $this->get_field_name('totalhits_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('online_view'); ?>"><?php _e('Enable Whos Online display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['online_view'], 'on' ); ?> id="<?php echo $this->get_field_id('online_view'); ?>" name="<?php echo $this->get_field_name('online_view'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('ip_display'); ?>"><?php _e('Enable IP address display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['ip_display'], 'on' ); ?> id="<?php echo $this->get_field_id('ip_display'); ?>" name="<?php echo $this->get_field_name('ip_display'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('server_time'); ?>"><?php _e('Enable Server Time display? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['server_time'], 'on' ); ?> id="<?php echo $this->get_field_id('server_time'); ?>" name="<?php echo $this->get_field_name('server_time'); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('statsmechanic_align'); ?>"><?php _e('Plugins align? ', 'wp-statsmechanic'); ?>
+				<select class="select" id="<?php echo $this->get_field_id('statsmechanic_align'); ?>" name="<?php echo $this->get_field_name('statsmechanic_align'); ?>" selected="<?php echo $instance['statsmechanic_align']; ?>">
+				<option value="<?php echo $instance['statsmechanic_align']; ?>" selected><?php echo $instance['statsmechanic_align']; ?></option>
+				<option value="Left">Left</option>
+				<option value="Center">Center</option>
+				<option value="Right">Right</option>
+				</select></label></p>
+		<p><label for="<?php echo $this->get_field_id('statsmechanic_credit'); ?>"><?php _e('Display plugin credit? ', 'wp-statsmechanic'); ?><input type="checkbox" class="checkbox" <?php checked( $instance['statsmechanic_credit'], 'on' ); ?> id="<?php echo $this->get_field_id('statsmechanic_credit'); ?>" name="<?php echo $this->get_field_name('statsmechanic_credit'); ?>" /></label></p><p><?php _e('Please go to <a href="options-general.php?page=plugin_statsmechanic_menu">Settings -> Visitor Counter Options</a> to configure image counter','wp-statsmechanic');?></p>
+		<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ZMEZEYTRBZP5N&lc=ID&item_name=Aditya%20Subawa&item_number=426267&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" target="_blank"><img src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" alt="<?php _e('Donate', 'wp-statsmechanic') ?>" /></a></p>
+	<?php
 
   }
     public function widget($args, $instance){
         extract($args, EXTR_SKIP);
     
-	$ipaddress = isset($instance['ip_display']) ? $instance['ip_display'] : false ; // display ip address
-	$stime = isset($instance['server_time']) ? $instance['server_time'] : false ; // display server time
-	$fontcolor= $instance['font_color'];
-	$count_length = $instance['count_length'];
-	$style = get_option ('statsmechanic_style');
-	$credit = $instance['statsmechanic_credit'];
-	$align = $instance['statsmechanic_align'];
-	$todayview = $instance ['today_view'];
-	$yesview = $instance ['yesterday_view'];
-	$monthview = $instance ['month_view'];
-	$yearview = $instance ['year_view'];
-	$totalview = $instance ['total_view'];
-	$hitsview = $instance ['hits_view'];
-	$totalhitsview = $instance ['totalhits_view'];
-	$onlineview = $instance ['online_view'];
-	$count_start = $instance ['count_start'];
-	$hits_start = $instance ['hits_start'];
-	
-	echo $before_widget;
-    $title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+		$ipaddress = isset($instance['ip_display']) ? $instance['ip_display'] : false ; // display ip address
+		$stime = isset($instance['server_time']) ? $instance['server_time'] : false ; // display server time
+		$fontcolor= $instance['font_color'];
+		$count_length = $instance['count_length'];
+		$style = get_option ('statsmechanic_style');
+		$credit = $instance['statsmechanic_credit'];
+		$align = $instance['statsmechanic_align'];
+		$todayview = $instance ['today_view'];
+		$yesview = $instance ['yesterday_view'];
+		$monthview = $instance ['month_view'];
+		$yearview = $instance ['year_view'];
+		$totalview = $instance ['total_view'];
+		$hitsview = $instance ['hits_view'];
+		$totalhitsview = $instance ['totalhits_view'];
+		$onlineview = $instance ['online_view'];
+		$count_start = $instance ['count_start'];
+		$hits_start = $instance ['hits_start'];
+		
+		echo $before_widget;
+		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 	
  
     if (!empty($title))

@@ -36,7 +36,7 @@ get_header(); ?>
             </header><!-- .entry-header -->
             <div class="entry-content">
                 <p></p>
-                <figure class="wp-block-table">
+                <figure class="wp-block-table" id="order-confirm">
                     <table class="" style="margin-top: 20px;">
                         <style>table, th, td { border: 1px solid black;}</style>
                         <tbody>
@@ -55,7 +55,10 @@ get_header(); ?>
         </article>
     </main><!-- #main -->
 </div><!-- #primary -->
-
+<script type="text/javascript">
+    var table_data = document.getElementById('order-confirm');
+    table_data.innerHTML = sessionStorage.getItem("product_order");
+</script>
 <?php 
 get_sidebar();
 get_footer(); ?>

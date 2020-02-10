@@ -18,6 +18,7 @@
 	<header class="entry-header">
 		<?php
 		$meta = get_post_meta(get_the_ID(), 'my_price_content', true ); 
+		$meta_qr = get_post_meta(get_the_ID(), 'product_qr_code', true ); 
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
@@ -41,6 +42,7 @@
 
 	<div class="entry-content">
 		<?php the_content(); ?>
+		
 
 		<?php
 			wp_link_pages( array(
@@ -53,11 +55,12 @@
 		if (typeof(Storage) !== "undefined") {
 			// Store
 			sessionStorage.setItem("product_name", "<?php the_title(); ?>");
-			sessionStorage.setItem("product_link", "<?php esc_url( get_permalink() ); ?>");
+			sessionStorage.setItem("product_link", "<?php echo esc_url( get_permalink() ); ?>");
 			sessionStorage.setItem("product_meta", '<?php echo addslashes($meta) ?>');
+			sessionStorage.setItem("product_qrcode", '<?php echo addslashes($meta_qr) ?>');
 			sessionStorage.setItem("product_order", "0");
 		} else {
 			
 		}
 	</script>
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- #post-<?php the_ID(); ?> --> 

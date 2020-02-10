@@ -308,20 +308,24 @@ get_header(); ?>
                 var ship_cod = document.getElementById('ship_cod');
                 var payment_value = pay_by_bank.checked;
                 if(!payment_value){
-                    payment_value = ship_cod.checked;
+                    payment_value = ship_cod.value;
+                }
+                else {
+                    payment_value = pay_by_bank.value;
                 }
 
                 var email_html = '<style>table, th, td { border: 1px solid black;}</style>';
-                email_html    += '<table class="" style="margin-top: 20px;">';
+                email_html    += '<table border="1" class="" style="margin-top: 20px; border: 1px solid black;">';
                 email_html     +=    '<tbody>';
-                email_html     +=        '<tr><td>Tên Khách Hàng</td><td>'+client_name_value+'</td></tr>';
-                email_html     +=        '<tr><td>Địa Chỉ</td><td>'+client_address_value+', '+client_ward_value+', '+client_district_value+', '+client_city_value+'</td></tr>';
-                email_html     +=        '<tr><td>Số Điện Thoại</td><td>'+client_phone_value+'</td></tr>';
-                email_html     +=        '<tr><td>Email</td><td>'+client_email_value+'</td></tr>';
-                email_html     +=        '<tr><td>Hình Thức Thanh Toán</td><td>'+payment_value+'</td></tr>';
-                email_html     +=        '<tr><td>Tên Sản Phẩm</td><td><a href="'+sessionStorage.getItem("product_link")+'">'+sessionStorage.getItem("product_name")+'</a></td></tr>';
-                email_html     +=        '<tr><td>Loại</td><td>'+product_type_value+'</td></tr>';
-                email_html     +=        '<tr><td>Số lượng</td><td>'+quality_value+' kg</td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" style="border: 1px solid black;">Tên Khách Hàng</td><td border="1" style="border: 1px solid black;">'+client_name_value+'</td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" style="border: 1px solid black;">Địa Chỉ</td><td border="1" style="border: 1px solid black;">'+client_address_value+', '+client_ward_value+', '+client_district_value+', '+client_city_value+'</td></tr>';
+                email_html     +=        '<tr border="1"><td style="border: 1px solid black;">Số Điện Thoại</td><td border="1" style="border: 1px solid black;">'+client_phone_value+'</td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" style="border: 1px solid black;">Email</td><td border="1" style="border: 1px solid black;">'+client_email_value+'</td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" >Hình Thức Thanh Toán</td><td border="1" >'+payment_value+'</td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" style="border: 1px solid black;">Tên Sản Phẩm</td><td border="1" style="border: 1px solid black;"><a target="_blank" href="'+encodeURI(sessionStorage.getItem("product_link"))+'" data-saferedirecturl="'+encodeURI(sessionStorage.getItem("product_link"))+'"> <span>'+sessionStorage.getItem("product_name")+'</span></a></td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" style="border: 1px solid black;">Loại</td><td border="1" style="border: 1px solid black;">'+product_type_value+'</td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" style="border: 1px solid black;">Số lượng</td><td border="1" style="border: 1px solid black;">'+quality_value+' kg</td></tr>';
+                email_html     +=        '<tr border="1"><td border="1" style="border: 1px solid black;">Mã QR Sản Phẩm</td><td border="1" style="border: 1px solid black;"><img src="'+encodeURI(sessionStorage.getItem("product_qrcode")) +'"/></td></tr>';
                 email_html     +=    '</tbody>';
                 email_html    += '</table>';
 
@@ -333,7 +337,9 @@ get_header(); ?>
                 };
 
                 jQuery.post('<?php echo admin_url('admin-ajax.php');?>', data, function(response){
-                    console.log(response);
+                    if(response == "1") {
+                        document.location = '/xac-nhan-don-hang';
+                    }
                 });
             }
 

@@ -141,7 +141,8 @@ function send_smtp_email( $phpmailer ) {
     $phpmailer->Username   = SMTP_USERNAME;
     $phpmailer->Password   = SMTP_PASSWORD;
     $phpmailer->From       = SMTP_FROM;
-    $phpmailer->FromName   = SMTP_FROMNAME;
+	$phpmailer->FromName   = SMTP_FROMNAME;
+	$phpmailer->IsHTML(true);
 }
 
 add_action( 'wp_ajax_nopriv_send_email_by_ajax', 'send_email_by_ajax' );
@@ -149,8 +150,31 @@ add_action( 'wp_ajax_send_email_by_ajax', 'send_email_by_ajax' );
 function send_email_by_ajax(){
 	$value = 0;
 	if(( isset( $_POST['user_email'] ) )&&(esc_attr( $_POST['user_email'] ) != '')){
-		$value = wp_mail("levietquangt2@gmail.com", "Đơn hàng", $_POST['user_email']);
+		$headers = array('Content-Type: text/html; charset=UTF-8');
+		$headers = "text/html"."\r\n";
+		$headers .= 'Cc: levietquangt2@gmail.com'."\r\n";
+		$headers .= 'Cc: chicongnguyen1983@gmail.com'."\r\n";
+		$headers .= 'Cc: Duythonhuan@gmail.com'."\r\n";
+		// $headers  = 'MIME-Version: 1.0' . "\r\n";
+		// $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$value = wp_mail("nguyentuonglong1991@gmail.com", "Đơn hàng", $_POST['user_email'], $headers);
 	}
 	echo $value;
 	die();
+}
+
+add_action ( 'admin_enqueue_scripts', function () {
+    if (is_admin ())
+        wp_enqueue_media ();
+} );
+
+add_filter( 'the_content', 'filter_the_content_in_the_main_loop' );
+ 
+function filter_the_content_in_the_main_loop( $content ) {
+    // Check if we're inside the main loop in a single post page.
+    if ( is_single() && in_the_loop() && is_main_query() ) {
+		$block = '<div class="wp-block-image"><figure class="aligncenter"><a href="/dat-hang"><img src="https://s-martsg.com/wp-content/uploads/2020/02/dat-mua-ngay.gif" alt="" class="wp-image-480"></a></figure></div>';
+        return $content . $block ;
+    }
+    return $content;
 }
